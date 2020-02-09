@@ -70,7 +70,7 @@
 			<plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>dockerfile-maven-plugin</artifactId>
-				<version>1.4.3</version>
+				<version>1.4.7</version>
 				<executions>
 					<execution>
 						<id>default</id>
@@ -80,9 +80,13 @@
 					</execution>
 				</executions>
 				<configuration>
-					<repository>docker.io/kkapelon/docker-maven-comparison</repository>
+					<repository>${project.artifactId}</repository>
 					<tag>${project.version}</tag>
+					<buildArgs>
+						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+					</buildArgs>
 				</configuration>
+
 			</plugin>
 		</plugins>
 	</build>
